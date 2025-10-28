@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designer vs Coder</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Virgil Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Virgil&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+    body {
+        font-family: 'Virgil', sans-serif;
+    }
+    </style>
+</head>
+<body>
+    <!-- ===== Header ===== -->
+    <nav class="navbar">
+        <div class="header-padding flex justify-between items-center w-full">
+            
+            <!-- Left Logo -->
+            <div class="flex items-center">
+                <img src="resources/vFont.jpg" alt="Logo" class="w-20 h-20">
+            </div>
+
+            <!-- Center Links -->
+            <ul class="flex space-x-8 text-sm">
+            <li><a href="#" class="hover:text-gray-600">about</a></li>
+            <li><a href="#" class="hover:text-gray-600">learn</a></li>
+            <li><a href="#" class="hover:text-gray-600">portfolio</a></li>
+            <li><a href="#" class="hover:text-gray-600">blog</a></li>
+            <li><a href="#" class="hover:text-gray-600">contact</a></li>
+            </ul>
+
+            <!-- Right Social Icons -->
+            <div class="flex gap-2">
+            <img src="resources/linkedn.jpg" alt="LinkedIn" class="w-12 h-12">
+            <img src="resources/whatapps.jpg" alt="WhatsApp" class="w-12 h-12">
+            <img src="resources/twitter.jpg" alt="Twitter" class="w-12 h-12">
+            <img src="resources/instagram.webp" alt="Instagram" class="w-12 h-12">
+            </div>
+        </div>
+    </nav>
+
+  <!-- ===== Split Container ===== -->
+    <div class="body-content">
+        <!-- Image Section -->
+        <div class="img-container">
+            <!-- If needed, you can split this section in left/right as before -->
+            <!-- <div class="split left">
+                <img src="resources/designer.jpg" alt="Designer" class="coder-image">
+            </div> -->
+            
+            <img src="resources/1_image.jpg" alt="Coder" class="coder-image">
+            <!-- <div class="overlay"></div> -->
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-section">
+            <!-- Section Divider -->
+            <div class="section-divider">
+                <li>
+                    <a href="#" class="hover:text-gray-600">Some of my latest work</a>
+                </li>
+            </div>
+
+            <!-- ===== Cards Section ===== -->
+            <div class="card-container" id="cardContainer"></div>
+            
+            <!-- Bottom Divider -->
+            <div class="section-divider"></div>
+
+            <!-- Scroll to Top -->
+            <div class="flex justify-center mb-8">
+                <a href="#" class="bg-gray-100 p-3 rounded-full shadow hover:bg-gray-200 transition">
+                    <i class="fas fa-chevron-up text-gray-600"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+        <!-- ===== Footer ===== -->
+        <footer class="border-t border-gray-200 py-6 px-6 lg:px-20 text-center md:text-left text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center">
+        <p>© 2025 Vishal Sheth</p>
+        <ul class="flex space-x-6 mt-4 md:mt-0">
+            <li><a href="#" class="hover:text-gray-800">about</a></li>
+            <li><a href="#" class="hover:text-gray-800">learn</a></li>
+            <li><a href="#" class="hover:text-gray-800">portfolio</a></li>
+            <li><a href="#" class="hover:text-gray-800">blog</a></li>
+            <li><a href="#" class="hover:text-gray-800">contact</a></li>
+        </ul>
+        </footer>
+    <!-- </div> -->
+
+    <!-- ===== JS File ===== -->
+    <script src="script.js"></script>
+</body>
+</html>

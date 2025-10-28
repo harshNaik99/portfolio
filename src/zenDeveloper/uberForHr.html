@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalentBridge Recruiting - Professional Freelance Recruiter</title>
+    <style>
+        /* Reset */
+        html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, ul, li, section, header, footer, nav {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+        }
+
+        /* Variables */
+        :root {
+            --color-primary: #333333;
+            --color-secondary: #757575;
+            --color-accent: #111111;
+            --color-light: #f5f5f5;
+            --color-border: #dddddd;
+            --color-white: #ffffff;
+        }
+
+        /* Base Styles */
+        html {
+            font-size: 62.5%;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: var(--color-white);
+            font-size: 18px;
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            line-height: 1.5;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Header */
+        header {
+            background: var(--color-accent);
+            height: 62px;
+            padding: 0 5%;
+            position: fixed;
+            width: 90%;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .logo {
+            height: 62px;
+            line-height: 62px;
+            float: left;
+            color: var(--color-white);
+            font-size: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        nav {
+            float: right;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline-block;
+            margin-left: 2.4rem;
+        }
+
+        nav a {
+            color: var(--color-white);
+            text-decoration: none;
+            line-height: 62px;
+            font-size: 16px;
+            font-size: 1.6rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* Content */
+        .content {
+            margin-top: 62px;
+        }
+
+        /* Sections */
+        section {
+            padding: 6.4rem 5%;
+            clear: both;
+        }
+
+        section.light {
+            background: var(--color-white);
+            border-bottom: var(--color-border) solid 1px;
+        }
+
+        section.dark {
+            background: var(--color-light);
+            border-bottom: var(--color-border) solid 1px;
+            box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .row {
+            max-width: 1040px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: normal;
+            color: var(--color-primary);
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 80px;
+            font-size: 8rem;
+            margin-bottom: 1.6rem;
+            letter-spacing: -0.06em;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-size: 3.6rem;
+            margin-bottom: 1.6rem;
+        }
+
+        h3 {
+            font-size: 26px;
+            font-size: 2.6rem;
+            margin-bottom: 1.6rem;
+        }
+
+        h4 {
+            font-size: 22px;
+            font-size: 2.2rem;
+            margin-bottom: 1.6rem;
+        }
+
+        p {
+            margin-bottom: 2.4rem;
+            line-height: 1.7;
+            font-size: 20px;
+            font-size: 2rem;
+        }
+
+        p.intro {
+            font-size: 24px;
+            font-size: 2.4rem;
+            color: var(--color-secondary);
+            line-height: 1.3;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .uppercase {
+            color: var(--color-secondary);
+            text-transform: uppercase;
+            font-size: 14px;
+            font-size: 1.4rem;
+            letter-spacing: 0.2rem;
+            font-weight: 600;
+        }
+
+        /* Grid */
+        .col-3 {
+            width: 30.7692307692%;
+            float: left;
+            margin-right: 3.84615385%;
+            margin-bottom: 4.8rem;
+        }
+
+        .col-3:nth-child(3n) {
+            margin-right: 0;
+        }
+
+        /* Stats */
+        .stats {
+            text-align: center;
+        }
+
+        .stat-item {
+            display: inline-block;
+            width: 22%;
+            margin: 0 1.5%;
+            vertical-align: top;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-size: 4.8rem;
+            font-weight: bold;
+            color: var(--color-accent);
+            margin-bottom: 0.8rem;
+        }
+
+        .stat-label {
+            color: var(--color-secondary);
+            font-size: 16px;
+            font-size: 1.6rem;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            background: var(--color-white);
+            padding: 3.2rem;
+            border-radius: 8px;
+            box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1.6rem;
+            opacity: 0.8;
+        }
+
+        /* Process Steps */
+        .process-step {
+            text-align: center;
+            display: inline-block;
+            width: 22%;
+            margin: 0 1.5%;
+            vertical-align: top;
+        }
+
+        .step-number {
+            background: var(--color-accent);
+            color: var(--color-white);
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-size: 3.2rem;
+            font-weight: bold;
+            margin: 0 auto 1.6rem;
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: flex;
+            gap: 3.2rem;
+            margin-top: 4.8rem;
+        }
+
+        .pricing-card {
+            flex: 1;
+            background: var(--color-white);
+            padding: 4.8rem 3.2rem;
+            border-radius: 8px;
+            border: 2px solid var(--color-border);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-4px);
+        }
+
+        .pricing-card.featured {
+            border: 4px solid var(--color-accent);
+            position: relative;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: 0.4rem 1.6rem;
+            font-size: 12px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            border-radius: 16px;
+        }
+
+        .price {
+            font-size: 48px;
+            font-size: 4.8rem;
+            font-weight: bold;
+            color: var(--color-accent);
+            margin: 1.6rem 0;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 2.4rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            padding-left: 2.4rem;
+            position: relative;
+        }
+
+        .pricing-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #5fb2a8;
+            font-weight: bold;
+        }
+
+        /* Buttons */
+        .button {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: 1.2rem 3.2rem;
+            font-size: 18px;
+            font-size: 1.8rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .button.secondary {
+            background: var(--color-white);
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 2.4rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem 1.6rem;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            font-size: 16px;
+            font-size: 1.6rem;
+            font-family: inherit;
+            box-sizing: border-box;
+            box-shadow: inset 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.4rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-light);
+            padding: 4rem 5%;
+            text-align: center;
+            color: var(--color-secondary);
+            font-size: 16px;
+            font-size: 1.6rem;
+            box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        footer a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            margin: 0 1.6rem;
+        }
+
+        footer a:hover {
+            color: var(--color-primary);
+        }
+
+        .social-links {
+            margin-bottom: 2.4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 40px; font-size: 4rem; }
+            h2 { font-size: 28px; font-size: 2.8rem; }
+            
+            .col-3 {
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .stat-item,
+            .process-step {
+                width: 100%;
+                margin: 2.4rem 0;
+                display: block;
+            }
+
+            .pricing-grid {
+                flex-direction: column;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .col-3 {
+                width: 48%;
+                margin-right: 4%;
+            }
+
+            .col-3:nth-child(2n) {
+                margin-right: 0;
+            }
+
+            .col-3:nth-child(3n) {
+                margin-right: 4%;
+            }
+
+            .stat-item {
+                width: 48%;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Clearfix */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">TalentBridge</a>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Hero Section -->
+        <section class="light">
+            <div class="row text-center fade-in">
+                <p class="uppercase">Technical Recruitment Specialist</p>
+                <h1>Expert Tech Recruiter<br>with 4+ Years Experience</h1>
+                <p class="intro">Full Stack Developer turned Technical Recruiter. I combine deep technical knowledge with proven recruiting success to find exceptional tech talent for your team.</p>
+                <a href="#contact" class="button">Partner With Me</a>
+                <a href="#services" class="button secondary">Learn More</a>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="dark">
+            <div class="row stats">
+                <div class="stat-item">
+                    <div class="stat-number">700+</div>
+                    <div class="stat-label">Technical Interviews Conducted</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">47+</div>
+                    <div class="stat-label">Successful Placements</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">92%</div>
+                    <div class="stat-label">6-Month Retention Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">32%</div>
+                    <div class="stat-label">Faster Time-to-Hire</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="light" id="about">
+            <div class="row">
+                <h2 class="text-center">Why Companies Trust Me for Tech Hiring</h2>
+                <p class="intro text-center">4+ years as a developer + Technical interviewing expertise = Better tech hires</p>
+                
+                <div class="col-3">
+                    <div class="feature-card">
+                        <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <h4>Technical Expertise</h4>
+                        <p>B.Tech in Computer Science with 5 years as Full Stack Developer. I speak your language and understand technical requirements deeply.</p>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="feature-card">
+                        <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <h4>Proven Track Record</h4>
+                        <p>700+ technical interviews conducted. 47+ successful placements with 92% retention rate. Working with 7+ clients including Apple, Honda, American Express.</p>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="feature-card">
+                        <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        <h4>Fast Results</h4>
+                        <p>Reduced time-to-hire by 32% through streamlined processes. Pre-vetted pipeline of 300+ candidates ready to interview.</p>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="feature-card">
+                        <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                        <h4>Specialized Roles</h4>
+                        <p>Expert in hard-to-fill positions: ML Engineers, DevOps Specialists, Cybersecurity Professionals, and Senior Software Engineers.</p>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="feature-card">
+                        <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                        <h4>Quality Assessment</h4>
+                        <p>Structured technical assessments that improved candidate quality by 28%. Only send you candidates who can actually do the job.</p>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="feature-card">
+                        <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <h4>95% Offer Acceptance</h4>
+                        <p>Expert salary negotiation and candidate care ensures your offers get accepted. No wasted time on candidates who decline.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="dark" id="services">
+            <div class="row text-center">
+                <h2>Simple 4-Step Process</h2>
+                <p class="intro">From requirement to hire in just a few days</p>
+                
+                <div style="margin-top: 4.8rem;">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4>Share Your Needs</h4>
+                        <p>Tell me about the role, skills, and company culture.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4>I Source & Screen</h4>
+                        <p>I post jobs, source candidates, and conduct initial screenings.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4>Review Candidates</h4>
+                        <p>Receive pre-qualified profiles with my recommendations.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4>Interview & Hire</h4>
+                        <p>Interview your top picks. I support throughout.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="light" id="pricing">
+            <div class="row">
+                <h2 class="text-center">Flexible Pricing Models</h2>
+                <p class="intro text-center">Choose the model that works best for your hiring needs</p>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Contingency</h3>
+                        <div class="price">15-20%</div>
+                        <p>of annual salary</p>
+                        <ul class="pricing-features">
+                            <li>No upfront cost</li>
+                            <li>90-day replacement guarantee</li>
+                            <li>Best for one-off hires</li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">Popular</div>
+                        <h3>Retained</h3>
+                        <div class="price">Custom</div>
+                        <p>project-based pricing</p>
+                        <ul class="pricing-features">
+                            <li>Priority service</li>
+                            <li>Dedicated attention</li>
+                            <li>Best for senior roles</li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>Volume Hiring</h3>
+                        <div class="price">Bulk Rate</div>
+                        <p>discounted rates</p>
+                        <ul class="pricing-features">
+                            <li>Volume discounts</li>
+                            <li>Ongoing partnership</li>
+                            <li>Best for scaling teams</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="dark" id="contact">
+            <div class="row">
+                <h2 class="text-center">Let's Discuss Your Hiring Needs</h2>
+                <p class="intro text-center">Get in touch and let's start building your team</p>
+                
+                <div style="max-width: 68rem; margin: 4.8rem auto 0;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Company Name *</label>
+                            <input type="text" id="companyName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Person *</label>
+                            <input type="text" id="contactPerson" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tell Me About Your Hiring Needs *</label>
+                        <textarea id="hiringNeeds" required placeholder="Role, experience level, urgency, etc."></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="button" onclick="handleSubmit()">Send Inquiry</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="mailto:contact.SoftwareDeveloper7@gmail.com">contact.SoftwareDeveloper7@gmail.com</a>
+            <a href="tel:+916354825917">+91 6354-825917</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+        </div>
+        <p>© 2025 TalentBridge Recruiting. Technical Recruitment Specialist | B.Tech Computer Science | 4+ Years Experience</p>
+    </footer>
+
+    <script>
+        function handleSubmit() {
+            const companyName = document.getElementById('companyName').value;
+            const contactPerson = document.getElementById('contactPerson').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const hiringNeeds = document.getElementById('hiringNeeds').value;
+
+            if (!companyName || !contactPerson || !email || !phone || !hiringNeeds) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            alert('Thank you! I will contact you within 24 hours to discuss your hiring needs.');
+            
+            document.getElementById('companyName').value = '';
+            document.getElementById('contactPerson').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('hiringNeeds').value = '';
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

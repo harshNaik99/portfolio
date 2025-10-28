@@ -1,0 +1,255 @@
+/* ==============================
+   GLOBAL RESET & BASE STYLES
+============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff;
+  color: #222;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   NAVBAR
+============================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem;
+  background-color: black;
+  color: white;
+}
+
+.header-padding {
+  background-color: black;
+  color: white;
+  padding: 0 20px;
+}
+
+/* ==============================
+   BODY CONTENT LAYOUT
+============================== */
+.body-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* ==============================
+   IMAGE SECTION
+============================== */
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.coder-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.5rem;
+}
+
+/* ==============================
+   SPLIT VIEW (Optional)
+============================== */
+.split {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  transition: width 0.5s ease;
+}
+
+.left {
+  left: 0;
+  background: url("resources/designer.png") center/cover no-repeat, #222;
+}
+
+.right {
+  right: 0;
+  background: url("resources/coder.png") center/cover no-repeat, #333;
+}
+
+.split.left:hover,
+.split.right:hover {
+  filter: brightness(1.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* ==============================
+   OVERLAY (Between Splits)
+============================== */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 5px;
+  height: 100%;
+  background: white;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+
+/* ==============================
+   CONTENT SECTION
+============================== */
+.content-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #dbdbdb;
+  padding: 30px 0;
+  width: 100%;
+}
+
+/* ==============================
+   SECTION DIVIDER
+============================== */
+.section-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #484848;
+  font-family: 'Virgil', sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 20px 0;
+  width: 90%;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.section-divider:not(:empty)::before {
+  margin-right: 1em;
+}
+
+.section-divider:not(:empty)::after {
+  margin-left: 1em;
+}
+
+/* ==============================
+   HEADINGS
+============================== */
+h2 {
+  font-size: 1.5rem;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 15px;
+  font-family: 'Virgil', sans-serif;
+}
+
+/* ==============================
+   CARD SECTION
+============================== */
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 10px;
+  width: 100%;
+}
+
+.card-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.card-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.card {
+  flex: 0 0 320px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  object-fit: cover;
+}
+
+.card:hover img {
+  filter: brightness(1.05);
+}
+
+.card-content {
+  padding: 16px;
+  text-align: center;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #222;
+}
+
+.card-category {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+.card {
+  flex: 0 0 320px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeInUp 0.6s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
