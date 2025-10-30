@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vishal Sheth | Product Designer</title>
+    <link rel="stylesheet" href="my-app\src\css\siteground.css" />
+    <link rel="shortcut icon" href="my-app\src\images\favicon.ico" />
+    <script src="my-app\src\js\jquery.min.js"></script>
+  </head>
+
+  <body class="clearfix">
+    <div id="root"></div>
+  </body>
+
+  	<!-- --------------- Scripts -------------- -->
+
+			<script type="speculationrules">
+			{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/dannaway\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+			</script>
+			<script type="text/javascript" src="js/hooks.min.js" id="wp-hooks-js"></script>
+			<script type="text/javascript" src="js/i18n.min.js" id="wp-i18n-js"></script>
+			<script type="text/javascript" id="wp-i18n-js-after">
+			/* <![CDATA[ */
+			wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+			wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+			/* ]]> */
+			</script>
+			<script type="text/javascript" src="js/swv.min.js" id="swv-js"></script>
+			<script type="text/javascript" id="contact-form-7-js-before">
+			/* <![CDATA[ */
+			var wpcf7 = {
+				"api": {
+					"root": "https:\/\/www.adhamdannaway.com\/wp-json\/",
+					"namespace": "contact-form-7\/v1"
+				}
+			};
+			/* ]]> */
+			</script>
+			<script type="text/javascript" src="js/contact-form-7.min.js" id="contact-form-7-js"></script>
+
+			<script src="js/jquery.min_1.js"></script> 
+			<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script> 
+			<script src="js/clipboard.min.js"></script>
+			<script src="js/script.js"></script>
+			<script type="text/javascript">
+			<!--
+
+			//If browser is IE8 or older we show IE specific page
+			if(ie < 9){
+				ieMessage();
+			}
+
+			/*
+			* Call functions when dom is ready
+			*/
+			$(document).ready(function() {
+
+				// Hide browser top bar in mobiles
+				$('body').scrollTop(1);
+
+				// Toggle Navigation for mobile devices
+				$('.icon-nav').on('click', function(){
+					$('header nav').slideToggle();
+					$(this).toggleClass('active');
+				});
+
+				// Function to scroll to top
+				$('a[href=#top]').click(function(){
+
+					$('html, body').animate({scrollTop:0}, 1000, 'easeInOutQuad');
+					return false;
+				});
+
+				// Function to fade in image sprites
+				$('.sprite').fadeSprite();
+
+				//Function for thumbnail hover effect
+				$('.thumbs li').hoverThumb();
+
+				// Function to animate when leaving page
+				$('.transition, #nav .page_item a, #nav-footer a, #thumbs a, #next a, #prev a, #logo, #face a').leavePage();	
+
+				// Animate the header on first			
+				$('#header').stop().animate({'opacity': '1', 'top':'0'}, 1000);
+
+				// Copy email address to clipboard	
+				var clipboard = new ClipboardJS('#email');
+
+				clipboard.on('success', function(e) {
+					$('#email-tooltip').attr("tooltip", "Yay! My email address has been copied to your clipboard ✅");
+					$('#email-tooltip').addClass('success');
+
+					// Reset
+					$('#email-tooltip').mouseleave(function() {
+
+						setTimeout( function(){
+							$('#email-tooltip').attr("tooltip", "Click to copy my email address to your clipboard 😀");
+							$('#email-tooltip').removeClass('success');
+						}, 300);
+					});
+
+					e.clearSelection();
+				});
+
+				clipboard.on('error', function(e) {
+					$('#email-tooltip').attr("tooltip", "Sorry, there was a technical glitch. Please try again.");
+					$('#email-tooltip').toggleClass('fail');
+				});
+
+				// Preload the page with jPreLoader
+				$('body').jpreLoader({
+					showSplash: true
+				}, function() {	
+					//Show the page once images are loaded	
+						$('#face').animateHome();
+						$('#face').resizeFace();	
+				});
+			});
+			</script>
+</html>
