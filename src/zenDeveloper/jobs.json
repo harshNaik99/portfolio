@@ -1,0 +1,23 @@
+[
+  {
+    "jobType": "Remote",
+    "email": "hr@company1.com",
+    "jobTitle": "Senior Software Engineer",
+    "city": "Surat, Gujarat",
+    "experience": "5+ years"
+  },
+  {
+    "jobType": "Hybrid",
+    "email": "careers@company2.com",
+    "jobTitle": "Product Manager",
+    "city": "Mumbai, Maharashtra",
+    "experience": "3-5 years"
+  },
+  {
+    "jobType": "WFO",
+    "email": "jobs@company3.com",
+    "jobTitle": "Data Analyst",
+    "city": "Bangalore, Karnataka",
+    "experience": "2-4 years"
+  }
+]

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Job Listings</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+            color: #333333;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Header */
+        header {
+            background: #111;
+            padding: 2rem 5%;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 2.4rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #757575;
+            font-size: 1rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: #fff;
+            padding: 2rem 5%;
+            border-bottom: 1px solid #dddddd;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            font-family: inherit;
+            color: #333333;
+            background-color: #ffffff;
+            font-size: 1rem;
+            border: 1px solid #333333;
+            height: 3rem;
+            padding: 0 2rem;
+            text-align: center;
+            line-height: 3rem;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        .filter-btn.active {
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        .job-count {
+            text-align: center;
+            margin-top: 1rem;
+            color: #757575;
+            font-size: 0.9rem;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 5%;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .jobs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Job Column */
+        .job-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-height: 75vh;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .job-column::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .job-column::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+
+        .job-column::-webkit-scrollbar-thumb {
+            background: #333333;
+            border-radius: 3px;
+        }
+
+        .job-column::-webkit-scrollbar-thumb:hover {
+            background: #555555;
+        }
+
+        /* Job Card */
+        .job-card {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            border: 1px solid #dddddd;
+            animation: fadeIn 0.4s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .job-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333333;
+            line-height: 1.3;
+            flex: 1;
+        }
+
+        .job-type {
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            background: #f5f5f5;
+            border: 1px solid #dddddd;
+            border-radius: 16px;
+            color: #333333;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .job-type.remote {
+            background: #ebf9dd;
+            border-color: #bce68a;
+            color: #317F39;
+        }
+
+        .job-type.hybrid {
+            background: #EBFAFF;
+            border-color: #A1D8EA;
+            color: #007BA2;
+        }
+
+        .job-type.wfo,
+        .job-type.work-from-office {
+            background: #faf6ec;
+            border-color: #EBD8AB;
+            color: #946918;
+        }
+
+        .job-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .job-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #757575;
+            font-size: 0.9rem;
+        }
+
+        .job-detail-item strong {
+            color: #333333;
+            font-weight: 600;
+            min-width: 90px;
+        }
+
+        .job-detail-item a {
+            color: #111111;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .job-detail-item a:hover {
+            color: #757575;
+            text-decoration: underline;
+        }
+
+        .job-email {
+            word-break: break-all;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #757575;
+            grid-column: 1 / -1;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #333333;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #757575;
+            grid-column: 1 / -1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HR Job Listings</h1>
+        <p>Find your next opportunity</p>
+    </header>
+
+    <div class="filter-section">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Jobs</button>
+            <button class="filter-btn" data-filter="remote">Remote</button>
+            <button class="filter-btn" data-filter="hybrid">Hybrid</button>
+            <button class="filter-btn" data-filter="wfo">Work From Office</button>
+            <button class="filter-btn" data-filter="wfo">Remote Job Site</button>
+        </div>
+        <div class="job-count">
+            <span id="jobCount">Loading jobs...</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="jobs-grid" id="jobsGrid">
+            <div class="loading">Loading job listings...</div>
+        </div>
+    </div>
+
+    <script>
+        let allJobs = [];
+        let currentFilter = 'all';
+
+        // ====== CONFIGURATION ======
+        // Google Sheets: Replace with your actual spreadsheet ID and sheet name
+        const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/YOUR_SPREADSHEET_ID/gviz/tq?tqx=out:json&sheet=YOUR_SHEET_NAME';
+        
+        // JSON File: Path to your jobs.json file
+        const JSON_FILE_PATH = 'jobs.json';
+
+        // ====== LOAD FROM GOOGLE SHEETS ======
+        async function loadJobsFromGoogleSheets() {
+            try {
+                const response = await fetch(GOOGLE_SHEET_URL);
+                const text = await response.text();
+                
+                // Parse Google Sheets JSON response
+                const json = JSON.parse(text.substr(47).slice(0, -2));
+                const rows = json.table.rows;
+
+                // Convert to job objects (assuming columns: Job Type | Email | Job Title | City | Experience)
+                const sheetJobs = rows.slice(1).map(row => {
+                    const cells = row.c;
+                    return {
+                        jobType: cells[0]?.v || '',
+                        email: cells[1]?.v || '',
+                        jobTitle: cells[2]?.v || '',
+                        city: cells[3]?.v || '',
+                        experience: cells[4]?.v || '',
+                        source: 'Google Sheets'
+                    };
+                }).filter(job => job.jobTitle && job.email);
+
+                console.log(`✅ Loaded ${sheetJobs.length} jobs from Google Sheets`);
+                return sheetJobs;
+            } catch (error) {
+                console.warn('⚠️ Could not load from Google Sheets:', error.message);
+                return [];
+            }
+        }
+
+        // ====== LOAD FROM JSON FILE ======
+        async function loadJobsFromJSON() {
+            try {
+                const response = await fetch(JSON_FILE_PATH);
+                if (!response.ok) {
+                    throw new Error('JSON file not found');
+                }
+                const jsonJobs = await response.json();
+                
+                // Add source tag
+                const jobsWithSource = jsonJobs.map(job => ({
+                    ...job,
+                    source: 'JSON File'
+                }));
+
+                console.log(`✅ Loaded ${jobsWithSource.length} jobs from JSON file`);
+                return jobsWithSource;
+            } catch (error) {
+                console.warn('⚠️ Could not load from JSON file:', error.message);
+                return [];
+            }
+        }
+
+        // ====== LOAD FROM BOTH SOURCES ======
+        async function loadAllJobs() {
+            document.getElementById('jobsGrid').innerHTML = '<div class="loading">Loading jobs from multiple sources...</div>';
+            
+            // Load from both sources simultaneously
+            const [sheetJobs, jsonJobs] = await Promise.all([
+                loadJobsFromGoogleSheets(),
+                loadJobsFromJSON()
+            ]);
+
+            // Merge jobs from both sources
+            allJobs = [...sheetJobs, ...jsonJobs];
+
+            // Remove duplicates based on email + jobTitle combination
+            const uniqueJobs = [];
+            const seen = new Set();
+            
+            allJobs.forEach(job => {
+                const key = `${job.email}_${job.jobTitle}`.toLowerCase();
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    uniqueJobs.push(job);
+                }
+            });
+
+            allJobs = uniqueJobs;
+
+            console.log(`📊 Total unique jobs loaded: ${allJobs.length}`);
+            console.log(`   - From Google Sheets: ${sheetJobs.length}`);
+            console.log(`   - From JSON File: ${jsonJobs.length}`);
+            console.log(`   - Duplicates removed: ${(sheetJobs.length + jsonJobs.length) - allJobs.length}`);
+
+            // Display results
+            if (allJobs.length === 0) {
+                loadFallbackData();
+            } else {
+                displayJobs();
+            }
+        }
+
+        // ====== FALLBACK SAMPLE DATA ======
+        function loadFallbackData() {
+            console.log('ℹ️ Using fallback sample data');
+            allJobs = [
+                {
+                    jobType: "Remote",
+                    email: "hr@techcorp.com",
+                    jobTitle: "Senior Software Engineer",
+                    city: "Surat, Gujarat",
+                    experience: "5+ years",
+                    source: "Sample Data"
+                },
+                {
+                    jobType: "Hybrid",
+                    email: "careers@innovate.com",
+                    jobTitle: "Product Manager",
+                    city: "Mumbai, Maharashtra",
+                    experience: "3-5 years",
+                    source: "Sample Data"
+                },
+                {
+                    jobType: "WFO",
+                    email: "jobs@datatech.com",
+                    jobTitle: "Data Analyst",
+                    city: "Bangalore, Karnataka",
+                    experience: "2-4 years",
+                    source: "Sample Data"
+                },
+                {
+                    jobType: "Remote",
+                    email: "hiring@cloudbase.com",
+                    jobTitle: "DevOps Engineer",
+                    city: "Pune, Maharashtra",
+                    experience: "4-6 years",
+                    source: "Sample Data"
+                },
+                {
+                    jobType: "Hybrid",
+                    email: "recruitment@webdev.com",
+                    jobTitle: "Frontend Developer",
+                    city: "Ahmedabad, Gujarat",
+                    experience: "2-4 years",
+                    source: "Sample Data"
+                },
+                {
+                    jobType: "WFO",
+                    email: "hr@finance.com",
+                    jobTitle: "Business Analyst",
+                    city: "Delhi, NCR",
+                    experience: "3-5 years",
+                    source: "Sample Data"
+                }
+            ];
+            displayJobs();
+        }
+
+        // ====== DISPLAY JOBS ======
+        function displayJobs() {
+            const grid = document.getElementById('jobsGrid');
+            
+            // Filter jobs based on current filter
+            let filteredJobs = allJobs;
+            if (currentFilter !== 'all') {
+                filteredJobs = allJobs.filter(job => 
+                    job.jobType.toLowerCase().replace(/\s+/g, '-') === currentFilter.toLowerCase()
+                );
+            }
+
+            // Update count
+            document.getElementById('jobCount').textContent = 
+                `Showing ${filteredJobs.length} job${filteredJobs.length !== 1 ? 's' : ''}`;
+
+            // Clear grid
+            grid.innerHTML = '';
+
+            // Show empty state if no jobs
+            if (filteredJobs.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No jobs found</h3>
+                        <p>Try adjusting your filter to see more results.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Split jobs into two columns
+            const midpoint = Math.ceil(filteredJobs.length / 2);
+            const column1Jobs = filteredJobs.slice(0, midpoint);
+            const column2Jobs = filteredJobs.slice(midpoint);
+
+            // Create column 1
+            const column1 = document.createElement('div');
+            column1.className = 'job-column';
+            column1.innerHTML = column1Jobs.map(job => createJobCard(job)).join('');
+
+            // Create column 2
+            const column2 = document.createElement('div');
+            column2.className = 'job-column';
+            column2.innerHTML = column2Jobs.map(job => createJobCard(job)).join('');
+
+            grid.appendChild(column1);
+            grid.appendChild(column2);
+        }
+
+        // ====== CREATE JOB CARD HTML ======
+        function createJobCard(job) {
+            const jobTypeClass = job.jobType.toLowerCase().replace(/\s+/g, '-');
+            return `
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">${job.jobTitle}</h3>
+                        <span class="job-type ${jobTypeClass}">${job.jobType}</span>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-detail-item">
+                            <strong>Email:</strong>
+                            <a href="mailto:${job.email}" class="job-email">${job.email}</a>
+                        </div>
+                        <div class="job-detail-item">
+                            <strong>Location:</strong>
+                            <span>${job.city}</span>
+                        </div>
+                        <div class="job-detail-item">
+                            <strong>Experience:</strong>
+                            <span>${job.experience}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ====== FILTER BUTTON LISTENERS ======
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active state
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                // Update filter and display
+                currentFilter = this.dataset.filter;
+                displayJobs();
+            });
+        });
+
+        // ====== INITIALIZE ======
+        loadAllJobs();
+    </script>
+</body>
+</html>
